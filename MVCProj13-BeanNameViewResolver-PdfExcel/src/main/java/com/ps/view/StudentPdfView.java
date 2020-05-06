@@ -1,0 +1,46 @@
+package com.ps.view;
+
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.web.servlet.view.document.AbstractPdfView;
+
+import com.lowagie.text.Document;
+import com.lowagie.text.Font;
+import com.lowagie.text.Paragraph;
+import com.lowagie.text.Table;
+import com.lowagie.text.pdf.PdfWriter;
+import com.ps.dto.StudentDTO;
+
+public class StudentPdfView extends AbstractPdfView {
+
+	@Override
+	public void buildPdfDocument(Map<String, Object> map, Document doc, PdfWriter writer,
+			HttpServletRequest req, HttpServletResponse res) throws Exception {
+		
+		List<StudentDTO> listDTO=null;
+		Paragraph p=null;
+		Table t=null;
+		
+		//get Model Attribute data
+		listDTO=(List<StudentDTO>)map.get("listDTO");
+		//add paragraph
+		p=new Paragraph("Student Report",new Font(Font.BOLD));
+		doc.add(p);
+		//add table
+		t=new Table(5,listDTO.size());	//col,row
+		for(StudentDTO dto:listDTO) {
+			t.addCell(String.valueOf(dto.getSno()));
+			t.addCell(dto.getSname());
+			t.addCell(dto.getSadd());
+			t.addCell(String.valueOf(dto.getAvg()));
+			t.addCell(dto.getCourse());
+		}
+		doc.add(t);
+		
+	}//buildPdfDocument	
+
+}

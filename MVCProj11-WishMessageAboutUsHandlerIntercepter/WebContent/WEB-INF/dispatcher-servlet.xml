@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+<!-- Handler Mapping -->
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"> 
+		<property name="mappings">
+			 <props> 
+				<prop key="showhome.htm">shc</prop>
+			  	<prop key="wishmessage.htm">wmc</prop>
+			 	<prop key="aboutus.htm">sac</prop>
+			 	<prop key="contactus.htm">scc</prop>
+			 	</props> 
+		</property>
+		<property name="interceptors">
+			<array>
+				<ref bean="tci"/>
+			</array>
+		</property>
+	</bean>
+		
+	 <!-- Controller class cfg -->
+	 
+ 	<bean id="shc" class="com.ps.controller.ShowHomeController" />
+	<bean id="wmc" class="com.ps.controller.WishMessageController" />
+	<bean id="sac" class="com.ps.controller.AboutUsController" />
+	<bean id="scc" class="com.ps.controller.ContactUsController" />
+			
+	<!-- cfg Handler Interceptor -->
+	
+	<bean id="tci" class="com.ps.handler.TimeCheckInterceptor"/>
+
+	<!-- View Resolver cfg -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+
+</beans>

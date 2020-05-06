@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+<!-- Handler Mapping -->
+	<!-- <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"> 
+	<property name="order" value="10"/>
+		<property name="mappings">
+			 <props> 
+				<prop key="showhome.htm">shc</prop>
+			  	<prop key="wishmessage.htm">wmc</prop>
+			 	<prop key="aboutus.htm">sac</prop>
+			 	<prop key="contactus.htm">scc</prop>
+			 	</props> 
+		</property>
+	</bean>-->
+		
+	 <!-- Controller class cfg -->
+ <!-- <bean id="shc" class="com.ps.controller.ShowHomeController" />
+	<bean id="wmc" class="com.ps.controller.WishMessageController" />
+	<bean id="sac" class="com.ps.controller.AboutUsController" />
+	<bean id="scc" class="com.ps.controller.ContactUsController" />-->
+		
+	
+
+	<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
+		<property name="order" value="5"/>
+	</bean>
+	
+	 <!-- Controller class cfg -->
+  	<bean id="/showhome.htm" class="com.ps.controller.ShowHomeController" />
+	<!-- <bean id="/wishmessage.htm" class="com.ps.controller.WishMessageController" />
+	<bean id="/aboutus.htm" class="com.ps.controller.AboutUsController" />
+	<bean id="/contactus.htm" class="com.ps.controller.ContactUsController" />-->
+	
+	<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping">
+	<!-- <property name="order" value="1"/>-->
+	</bean>	
+		
+	<!-- Controller class cfg -->
+<!-- 	<bean class="com.ps.controller.ShowHomeController" />-->
+	<bean class="com.ps.controller.WishMessageController" />
+	<bean class="com.ps.controller.AboutUsController" />
+	<bean class="com.ps.controller.ContactUsController" />
+
+
+	<!-- View Resolver cfg -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+
+</beans>

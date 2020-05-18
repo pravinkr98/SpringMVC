@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC  
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"  
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd"> 
+       
+<tiles-definitions>
+	<definition name="baseDef" template="/WEB-INF/pages/layout.jsp">
+		<put-attribute name="title" value=""/>
+		<put-attribute name="header" value="/WEB-INF/pages/header.jsp"/>
+		<put-attribute name="menu" value="/WEB-INF/pages/menu.jsp"/>
+		<put-attribute name="body" value=""/>
+		<put-attribute name="footer" value="/WEB-INF/pages/footer.jsp"/>
+	</definition>
+	
+	<definition name="homePageDef" extends="baseDef">
+		<put-attribute name="title" value="Home page"/>
+		<put-attribute name="body" value="/WEB-INF/pages/home_info.jsp"/>
+	</definition>
+	
+	<definition name="coursePageDef" extends="baseDef">
+		<put-attribute name="title" value="Course page"/>
+		<put-attribute name="body" value="/WEB-INF/pages/course_info.jsp"/>
+	</definition>
+	
+	<definition name="facultyPageDef" extends="baseDef">
+		<put-attribute name="title" value="Faculty page"/>
+		<put-attribute name="body" value="/WEB-INF/pages/faculty_info.jsp"/>
+	</definition>
+	
+	<definition name="projectPageDef" extends="baseDef">
+		<put-attribute name="title" value="Project page"/>
+		<put-attribute name="body" value="/WEB-INF/pages/project_info.jsp"/>
+	</definition>
+	
+	<definition name="contactPageDef" extends="baseDef">
+		<put-attribute name="title" value="Contact page"/>
+		<put-attribute name="body" value="/WEB-INF/pages/contact_info.jsp"/>
+	</definition>
+	
+</tiles-definitions>

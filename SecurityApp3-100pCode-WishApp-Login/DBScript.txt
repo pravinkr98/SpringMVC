@@ -1,0 +1,16 @@
+SQL> conn scott/tiger
+Connected.
+SQL> select * from users;
+
+UNAME           PWD                                                    STATUS
+--------------- -------------------------------------------------- ----------
+raja            {noop}rani                                                  0
+rani            {noop}rani                                                  1
+suresh          {noop}hyd                                                   1
+
+SQL> select * from user_role;
+
+UNAME           ROLE
+--------------- --------------------
+raja            ROLE_BANK_CUSTOMER
+rani            ROLE_BANK_EMPLOYEE

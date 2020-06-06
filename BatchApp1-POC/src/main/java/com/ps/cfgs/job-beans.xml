@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd">
+
+	<!-- cfg reader -->
+	<bean id="reader" class="com.ps.reader.CustomBookReader">
+		<property name="books">
+			<array>
+				<value>Complete Reference Java</value>
+				<value>Head First Java</value>
+				<value>Thinking in Java</value>
+				<value>BBJ</value>
+				<value>Effective Java</value>
+			</array>
+		</property>
+	</bean>
+	
+	<!-- cfg processor -->
+	<bean id="processor" class="com.ps.processor.CustomBookProcessor"/>
+	
+	<!-- cfg writer -->
+	<bean id="writer" class="com.ps.writer.CustomBookWriter"/>
+	
+	<batch:job id="job1" job-repository="jobRepo">
+		<batch:step id="step1">
+			<batch:tasklet transaction-manager="txMgr">
+				<batch:chunk reader="reader" processor="processor" writer="writer" commit-interval="3"/>
+			</batch:tasklet>
+		</batch:step>
+	</batch:job>
+	
+</beans>
